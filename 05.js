@@ -40,5 +40,9 @@ function taskC() {
 }
 
 // 가장 먼저 완료된 작업을 찾아서 반환되는 값을 출력하세요.
-const result = await Promise.allSettled(taskA(), taskB(), taskC());
-console.log(result);
+async function findFirstFullfilledTask() {
+    const result = await Promise.race([taskA(), taskB(), taskC()]);
+    console.log(result);
+}
+
+findFirstFullfilledTask();
